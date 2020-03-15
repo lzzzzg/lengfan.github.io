@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://lengfan.github.io</id>
+    <title>冷饭</title>
+    <updated>2020-03-15T14:38:11.240Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://lengfan.github.io"/>
+    <link rel="self" href="https://lengfan.github.io/atom.xml"/>
+    <subtitle>不炒，只温</subtitle>
+    <logo>https://lengfan.github.io/images/avatar.png</logo>
+    <icon>https://lengfan.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, 冷饭</rights>
+    <entry>
+        <title type="html"><![CDATA[她来自对话后]]></title>
+        <id>https://lengfan.github.io/post/ta-lai-zi-dui-hua-hou/</id>
+        <link href="https://lengfan.github.io/post/ta-lai-zi-dui-hua-hou/">
+        </link>
+        <updated>2020-03-15T14:18:20.000Z</updated>
+        <content type="html"><![CDATA[<p><img src="https://lengfan.github.io/post-images/1584282558481.JPG" alt="" loading="lazy"><font color='#CCCCCC' size='2'>摄影 | Alvin Balemesa 来自ONE </font></p>
+<p>这个不是汤，因为今天没汤。</p>
+<p>只是想要谈谈想法而已，没办法做成汤。</p>
+<p>进入她的诞生，源自一场对话，或者是两场对话。</p>
+<p>这两场对话即使不达到想要的目的，但是至少有她的诞生。</p>
+<p>希望，好好的写下去。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于这里]]></title>
+        <id>https://lengfan.github.io/post/guan-yu-zhe-li/</id>
+        <link href="https://lengfan.github.io/post/guan-yu-zhe-li/">
+        </link>
+        <updated>2020-03-15T14:04:37.000Z</updated>
+        <summary type="html"><![CDATA[<pre><code>这里会炒很久的冷饭，也会有些新鲜的菜，如果合适，那是我们500年前修来的缘分。</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<pre><code>这里会炒很久的冷饭，也会有些新鲜的菜，如果合适，那是我们500年前修来的缘分。
+</code></pre>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="https://lengfan.github.io/post-images/1584281469236.jpeg" alt="" loading="lazy"></figure>
+<!-- more -->
+<pre><code>联系我：欢迎留言。
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[【代理】的那些事儿]]></title>
+        <id>https://lengfan.github.io/post/dai-li-de-na-xie-shi-er/</id>
+        <link href="https://lengfan.github.io/post/dai-li-de-na-xie-shi-er/">
+        </link>
+        <updated>2020-03-15T13:27:36.000Z</updated>
+        <content type="html"><![CDATA[<p>代理，在百度百科的解释是：</p>
+<blockquote>
+<p>指以他人的名义，在授权范围内进行对被代理人直接发生法律效力的法律行为。</p>
+</blockquote>
+<p>而这里所讲的代理和法律行为无关，是编程中的代理。</p>
+<p><em><strong>Java编程中两种常用的代理方式：JDK和CGLIB动态代理。</strong></em></p>
+<h3 id="基本概念">基本概念</h3>
+<p>自JDK3以后，Java提供了动态代理的技术，可在程序运行期创建接口的代理实例。</p>
+<p>1、JDK动态代理实现过程中只要涉及到java.lang.reflect包中的Proxy和InvocationHandler这两个类。</p>
+<ul>
+<li>其中通过Proxy类指定ClassLoader对象和一组Interface来创建动态代理，创建的代理类对象可以调用目标类中的方法；</li>
+<li>InvocationHandler是一个接口，通过实现该接口中的invoke方法，利用反射机制调用目标类的代码。</li>
+</ul>
+<blockquote>
+<p>JDK动态代理的限制是只能为接口创建代理实例，没有通过接口定义的业务方法的类则无法使用，那只能采用针对非接口的代理方式CGLIB代理。</p>
+</blockquote>
+<p>2、CGLIB代理是采用底层的字节码技术，使用字节码处理框架ASM来转换字节码并生成新的类。只要用到了net.sf.cglib.proxy包中的MethodInterceptor拦截接口和核心类Enhancer这个两个类。</p>
+<blockquote>
+<p>CGLIB代理是使用MethodInterceptor接口实现方式回调，当对代理中所有方法的调用时，都会转向MethodInterceptor类中的拦截(intercept)方法，在拦截方法中再调用底层对象对应的方法。但是原方法为final方法，则无法拦截该方法。</p>
+</blockquote>
+<h3 id="两者区别">两者区别</h3>
+<ul>
+<li>JDK动态代理是面向接口的，非接口的类则无法使用；</li>
+<li>CGLIB动态代理是通过字节码底层继承要代理类来实现的，可以实现运行期间动态扩展Java类。</li>
+</ul>
+<h3 id="代码示例">代码示例</h3>
+<ul>
+<li>创建一个接口</li>
+</ul>
+<pre><code>public interface HelloWorldService {
+
+	void sayHello(String type);
+
+}
+</code></pre>
+<ul>
+<li>接口实现</li>
+</ul>
+<pre><code>public class HelloWorldServiceImpl implements HelloWorldService {
+	
+	@Override
+	public void sayHello(String type) {
+		System.out.println(&quot;代理类型：&quot;+type+&quot;,Say:Hello World&quot;);
+	}
+}
+</code></pre>
+<ul>
+<li>JDK代理实现</li>
+</ul>
+<pre><code>public class JDKDynamicProxy&lt;T&gt; implements InvocationHandler{
+
+	public T object;
+	
+	public JDKDynamicProxy(T object) {
+		this.object = object;
+	}
+	/**
+	 * 获取被代理的接口的实例对象
+	 * 指定ClassLoader对象和一组Interface来创建动态代理
+	 * @return
+	 */
+	public T getProxy() {
+		return (T)Proxy.newProxyInstance(object.getClass().getClassLoader(), object.getClass().getInterfaces(), this);
+	}
+	
+	@Override
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+		Object o = method.invoke(object, args);
+		return o;
+	}
+	
+}
+</code></pre>
+<ul>
+<li>CGLIB代理实现</li>
+</ul>
+<pre><code>public class CGLIBProxy  implements MethodInterceptor{
+
+	/**
+	 * 创建代理对象
+	 * @param clazz 目标对象的class
+	 * @param &lt;T&gt;
+	 * @return
+	 */
+	public &lt;T&gt; T createProxyObject(Class&lt;T&gt; clazz) {
+		//生成代理对象
+		Enhancer enhancer = new Enhancer();
+		//设置代理的对象
+		enhancer.setSuperclass(clazz);
+		//设置回调对象
+		enhancer.setCallback(this);
+		return (T) enhancer.create();
+	}
+
+	/**
+	 *
+	 * @param arg0 cglib生成的代理对象
+	 * @param arg1 被代理的目标对象方法
+	 * @param arg2 被代理的目标对象的方法入参
+	 * @param arg3 代理方法
+	 * @return
+	 * @throws Throwable
+	 */
+	@Override
+	public Object intercept(Object arg0, Method arg1, Object[] arg2, MethodProxy arg3) throws Throwable {
+		Object object  = arg3.invokeSuper(arg0,arg2);
+		return object;
+	}
+}
+</code></pre>
+<ul>
+<li>测试</li>
+</ul>
+<pre><code>public class ProxyTest {
+
+	/**
+	 * jdk代理
+	 * 代理对象是helloWorldService接口
+	 */
+	@Test
+	public void jdkDynamicProxy() {
+		HelloWorldService helloWorldService = new HelloWorldServiceImpl();
+		JDKDynamicProxy&lt;HelloWorldService&gt; jdkDynamicProxy = new JDKDynamicProxy&lt;&gt;(helloWorldService);
+		HelloWorldService helloWorldServiceProxy = jdkDynamicProxy.getProxy();
+		helloWorldServiceProxy.sayHello(&quot;jdk&quot;);
+		
+	}
+	
+	/**
+	 * cglib 代理
+	 * 被代理目标是实现类HelloWorldServiceImpl而不是HelloWorldService接口
+	 * 如果传入的是HelloWorldService接口会报无法找到sayHello()方法
+	 */
+	@Test
+	public void cglibProxy() {
+		CGLIBProxy cglibProxy = new CGLIBProxy();
+		HelloWorldService helloWorldServiceProxy = cglibProxy.createProxyObject(HelloWorldServiceImpl.class);
+		helloWorldServiceProxy.sayHello(&quot;cglib&quot;);
+
+	}
+}
+</code></pre>
+<ul>
+<li>运行结果</li>
+</ul>
+<pre><code>代理类型：jdk,Say:Hello World
+代理类型：cglib,Say:Hello World
+</code></pre>
+<blockquote>
+<p>JDK和CGLIB动态代理代码实现其实并不复杂，感兴趣分析代理的过程，可以在测试方法中加入</p>
+</blockquote>
+<pre><code>System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, &quot;存放文件路径&quot;);
+</code></pre>
+<blockquote>
+<p>这段代码生成代理过程所创建的类文件，分析整个过程。</p>
+</blockquote>
+<h3 id="性能比较">性能比较</h3>
+<p>随着JDK版本升级，JDK动态代理的性能也在不断提升，那就通过代码测试两个代理模式在创建代理对象和调用目标对象方法所耗费的时间来做比较，测试基于JDK1.8，CGLIB jar包的版本是3.3.0。</p>
+<p><em><strong>创建代理对象性能比对</strong></em></p>
+<blockquote>
+<p>分别循环创建10万次，然后记录执行时间</p>
+</blockquote>
+<pre><code>@Test
+public void jdkvsCglib(){
+
+	System.out.println(&quot;------ JDK Proxy ------&quot;);
+	long startTime = System.currentTimeMillis();
+	for (int i=0;i&lt;100000;i++){
+		HelloWorldService helloWorldService = new HelloWorldServiceImpl();
+		JDKDynamicProxy&lt;HelloWorldService&gt; jdkDynamicProxy = new JDKDynamicProxy&lt;&gt;(helloWorldService);
+		jdkDynamicProxy.getProxy();
+	}
+	long endTime = System.currentTimeMillis();
+	System.out.println(&quot;JDK proxy generate object spend time:&quot; + (endTime-startTime) + &quot;ms&quot;);
+
+	System.out.println(&quot;------ CGLIB Proxy ------&quot;);
+	startTime = System.currentTimeMillis();
+	for (int i=0;i&lt;100000;i++){
+		CGLIBProxy cglibProxy = new CGLIBProxy();
+		cglibProxy.createProxyObject(HelloWorldServiceImpl.class);
+	}
+	endTime = System.currentTimeMillis();
+	System.out.println(&quot;CGLIB proxy generate object spend time:&quot; + (endTime-startTime) + &quot;ms&quot;);
+}
+</code></pre>
+<p>运行结果</p>
+<pre><code>------ JDK Proxy ------
+JDK proxy generate object spend time:156ms
+------ CGLIB Proxy ------
+CGLIB proxy generate object spend time:477ms
+</code></pre>
+<blockquote>
+<p>创建代理对象测试结果显然JDK性能比CGLIB性能要好。</p>
+</blockquote>
+<p><em><strong>调用目标对象方法性能比对</strong></em></p>
+<pre><code>@Test
+public void jdkvsCglibHandler(){
+	System.out.println(&quot;------ JDK Proxy ------&quot;);
+	long startTime = System.currentTimeMillis();
+	HelloWorldService helloWorldService = new HelloWorldServiceImpl();
+	JDKDynamicProxy&lt;HelloWorldService&gt; jdkDynamicProxy = new JDKDynamicProxy&lt;&gt;(helloWorldService);
+	HelloWorldService helloWorldServiceProxy = jdkDynamicProxy.getProxy();
+	for (int i=0;i&lt;100000;i++){
+		helloWorldServiceProxy.sayHello(&quot;jdk&quot;);
+	}
+	long endTime = System.currentTimeMillis();
+	System.out.println(&quot;JDK proxy  object handler spend time:&quot; + (endTime-startTime) + &quot;ms&quot;);
+
+	System.out.println(&quot;------ CGLIB Proxy ------&quot;);
+	startTime = System.currentTimeMillis();
+	CGLIBProxy cglibProxy = new CGLIBProxy();
+	HelloWorldService helloWorldServiceProxy2 = cglibProxy.createProxyObject(HelloWorldServiceImpl.class);
+	for (int i=0;i&lt;100000;i++){
+		helloWorldServiceProxy2.sayHello(&quot;cglib&quot;);
+	}
+	endTime = System.currentTimeMillis();
+	System.out.println(&quot;CGLIB proxy  object handler spend time:&quot; + (endTime-startTime) + &quot;ms&quot;);
+}
+</code></pre>
+<p>运行结果</p>
+<pre><code>------ JDK Proxy ------
+JDK proxy  object handler spend time:32ms
+------ CGLIB Proxy ------
+CGLIB proxy  object handler spend time:309ms
+</code></pre>
+<blockquote>
+<p>调用目标对象方法测试结果JDK性能比CGLIB性能好很多。</p>
+</blockquote>
+<h3 id="总结">总结</h3>
+<p>通过上面代码分析，两者实现起来都不是很复杂，这两者代理应用在Spring比较广泛，在Spring AOP就采用到。</p>
+<p>JDK代理只需要JDK环境即可实现，只要实现InvocationHandler，使用Proxy.newProxyInstance创建代理对象即可，但是它是面向接口的，并且代理的对象必须要实现接口。</p>
+<p>CGLIB是第三方类库，它可以为一个类创建一个子类，在创建的子类中采用方法拦截的技术拦截所有父类方法的调用。</p>
+<p>在性能方法，JDK1.8环境下的性能比CGLIB显然要高出很多。</p>
+<p>我们都知道推荐的都是面向接口编程模式，所以JDK动态代理也成为首选。</p>
+<hr>
+<blockquote>
+<p>重新炒起冷饭，只为温故而知新，如不足或冒犯之处，恳请指出，谢谢！</p>
+</blockquote>
+]]></content>
+    </entry>
+</feed>
